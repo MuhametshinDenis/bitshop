@@ -1,0 +1,23 @@
+@baseUrl = {{url}}/api/v1/favorites
+
+@productId = 2
+
+### Добавление товара в избранное
+POST {{baseUrl}}/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "productId": "{{productId}}"
+}
+
+### Получение списка избранных товаров
+GET {{baseUrl}}/ HTTP/1.1
+
+### Получение избранного товара по ID
+GET {{baseUrl}}/{{productId}} HTTP/1.1
+
+### Удаление товара из избранного
+DELETE {{baseUrl}}/{{productId}} HTTP/1.1
+
+### Удаление всех товаров из израбнного
+DELETE {{baseUrl}}/ HTTP/1.1

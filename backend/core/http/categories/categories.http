@@ -1,0 +1,29 @@
+@baseUrl = {{url}}/api/v1/categories
+
+@categoryName = {{$random.commerce.material}}
+@categoryId = 1
+
+### Создание категории
+POST {{baseUrl}}/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "{{categoryName}}"
+}
+
+### Получение всех категорий
+GET {{baseUrl}}/ HTTP/1.1
+
+### Получение категории по ID
+GET {{baseUrl}}/{{categoryId}} HTTP/1.1
+
+### Обновление категории
+PUT {{baseUrl}}/{{categoryId}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "{{categoryName}}"
+}
+
+### Удаление категории
+DELETE {{baseUrl}}/{{categoryId}} HTTP/1.1

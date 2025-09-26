@@ -1,0 +1,47 @@
+@baseUrl = {{url}}/api/v1/brands
+
+@brandName = {{$random.commerce.department}}
+@brandId = 1
+
+### Создание бренда
+POST {{baseUrl}}/ HTTP/1.1
+Content-Type: multipart/form-data; boundary="delimiter"
+
+--delimiter
+Content-Disposition: form-data; name="brand"
+Content-Type: application/json
+
+{
+  "name": "{{brandName}}"
+}
+--delimiter
+Content-Disposition: form-data; name="image"; filename="brand-image.png"
+
+< ./files/brand-image.png
+--delimiter--
+
+### Получение всех брендов
+GET {{baseUrl}}/ HTTP/1.1
+
+### Получение бренда по ID
+GET {{baseUrl}}/{{brandId}} HTTP/1.1
+
+### Обновление бренда
+PATCH {{baseUrl}}/{{brandId}} HTTP/1.1
+Content-Type: multipart/form-data; boundary="delimiter"
+
+--delimiter
+Content-Disposition: form-data; name="brand"
+Content-Type: application/json
+
+{
+  "name": "{{brandName}}"
+}
+--delimiter
+Content-Disposition: form-data; name="image"; filename="brand-image.png"
+
+< ./files/updated-brand-image.png
+--delimiter--
+
+### Удаление бренда
+DELETE {{baseUrl}}/{{brandId}} HTTP/1.1

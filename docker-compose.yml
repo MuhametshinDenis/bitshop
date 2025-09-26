@@ -1,0 +1,40 @@
+name: ${PROJECT_NAME}
+services:
+  database:
+    container_name: postgres
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    volumes:
+      - bitshop-db-data:/var/lib/postgresql/data
+  elasticsearch:
+    container_name: elasticsearch
+    image: bitnami/elasticsearch
+    ports:
+      - "9200:9200"
+  redis:
+    container_name: redis
+    image: redis:8.2.1-alpine
+    ports:
+      - "6379:6379"
+  s3:
+    container_name: minio
+    image: quay.io/minio/minio
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: ${S3_USERNAME}
+      MINIO_ROOT_PASSWORD: ${S3_PASSWORD}
+    volumes:
+      - bitshop-s3-data:/data
+
+volumes:
+  bitshop-db-data:
+  bitshop-s3-data:

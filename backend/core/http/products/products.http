@@ -1,0 +1,101 @@
+@baseUrl = {{url}}/api/v1/products
+
+@productName = {{$random.commerce.productName}}
+@productDescription = {{$random.lorem.paragraph}} {{$random.lorem.paragraph}}
+@productPrice = {{$random.commerce.price}}
+@productQuantity = {{$random.number.digit}}
+@product = {{$random.internet.image}}
+
+@productId = 1
+@categoryId = 1
+@brandId = 1
+
+### Создание продукта
+POST {{baseUrl}}/ HTTP/1.1
+Content-Type: multipart/form-data; boundary="delimiter"
+
+--delimiter
+Content-Disposition: form-data; name="product"
+Content-Type: application/json
+
+{
+  "name": "{{productName}}",
+  "description": "{{productDescription}}",
+  "price": "{{productPrice}}",
+  "quantity": "{{productQuantity}}",
+  "categoryId": "{{categoryId}}",
+  "brandId": "{{brandId}}",
+  "attributes": {
+    "color": "orange",
+    "влагозащита": true
+  }
+}
+--delimiter
+Content-Disposition: form-data; name="image"; filename="product-image.webp"
+
+< ./files/product-image.webp
+--delimiter--
+
+### Создание продукта без бренда и категорий
+POST {{baseUrl}}/ HTTP/1.1
+Content-Type: multipart/form-data; boundary="delimiter"
+
+--delimiter
+Content-Disposition: form-data; name="product"
+Content-Type: application/json
+
+{
+  "name": "{{productName}}",
+  "description": "{{productDescription}}",
+  "price": "{{productPrice}}",
+  "quantity": "{{productQuantity}}",
+  "attributes": {
+    "color": "orange",
+    "влагозащита": true
+  }
+}
+--delimiter
+Content-Disposition: form-data; name="image"; filename="product-image.webp"
+
+< ./files/product-image.webp
+--delimiter--
+
+### Получение всех продуктов
+GET {{baseUrl}}/ HTTP/1.1
+
+### Получение продукта по ID
+GET {{baseUrl}}/{{productId}} HTTP/1.1
+
+### Обновление продукта
+PATCH {{baseUrl}}/{{productId}} HTTP/1.1
+Content-Type: multipart/form-data; boundary="delimiter"
+
+--delimiter
+Content-Disposition: form-data; name="product"
+Content-Type: application/json
+
+{
+  "name": "{{productName}}",
+  "description": "{{productDescription}}"
+}
+--delimiter
+Content-Disposition: form-data; name="image"; filename="product-image.webp"
+
+< ./files/product-image.webp
+--delimiter--
+
+### Обновление поля категории у продукта
+PATCH {{baseUrl}}/{{productId}} HTTP/1.1
+Content-Type: multipart/form-data; boundary="delimiter"
+
+--delimiter
+Content-Disposition: form-data; name="product"
+Content-Type: application/json
+
+{
+  "quantity": 10
+}
+--delimiter--
+
+### Удаление продукта
+DELETE {{baseUrl}}/{{productId}} HTTP/1.1
