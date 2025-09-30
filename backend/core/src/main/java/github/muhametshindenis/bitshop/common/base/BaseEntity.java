@@ -30,7 +30,7 @@ public class BaseEntity {
 	@PrePersist
 	protected void onCreate() {
 		createdAt = LocalDateTime.now();
-		setDefaults();
+		initDefaults();
 	}
 
 	@PreUpdate
@@ -38,5 +38,5 @@ public class BaseEntity {
 		updatedAt = LocalDateTime.now();
 	}
 
-	protected void setDefaults() {}
+	protected void initDefaults() {}
 }

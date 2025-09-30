@@ -49,8 +49,11 @@ server:
 springdoc:
   api-docs:
     version: openapi-3-1
-    enabled: false
+    enabled: true
     path: /api/v1/docs
   swagger-ui:
     path: /api/v1/docs/swagger-ui
-    enabled: false
+    enabled: true
+#TODO: изменить на .env окружение
+stripe:
+  secret-key: sk_test_51SBgZFRxbOwr9p16piCcg0tsHShV2FPkZdvYDp55Lhizd3ceFrhPhzFSN0u19DC9YBWRxUOffikVJWv36EZnULBn003zxNSpQO

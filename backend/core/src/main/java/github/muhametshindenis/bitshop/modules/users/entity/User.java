@@ -4,7 +4,7 @@ import github.muhametshindenis.bitshop.common.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author Denis Muhametshin
@@ -38,6 +38,6 @@ public class User extends BaseEntity {
     @Column(name = "avatar_url")
     private String avatarUrl;
 
-    @Column(name = "delivery_address")
-    private String deliveryAddress;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<UserDeliveryAddress> userDeliveryAddresses;
 }

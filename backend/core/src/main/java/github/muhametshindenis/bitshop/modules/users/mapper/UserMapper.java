@@ -4,6 +4,7 @@ import github.muhametshindenis.bitshop.modules.users.dto.CreateUserDto;
 import github.muhametshindenis.bitshop.modules.users.dto.UpdateUserDto;
 import github.muhametshindenis.bitshop.modules.users.dto.UserResponseDto;
 import github.muhametshindenis.bitshop.modules.users.entity.User;
+import github.muhametshindenis.bitshop.modules.users.entity.UserDeliveryAddress;
 
 import java.util.Optional;
 
@@ -23,12 +24,18 @@ public class UserMapper {
     }
 
     public static UserResponseDto toResponse(User user) {
+        String primaryAddress = user.getUserDeliveryAddresses().stream()
+                .filter(UserDeliveryAddress::getIsPrimary)
+                .map(UserDeliveryAddress::getDeliveryAddress)
+                .findFirst()
+                .orElse(null);
+
         return new UserResponseDto(
                 user.getEmail(),
                 user.getFirstName(),
                 user.getLastName(),
                 user.getAvatarUrl(),
-                user.getDeliveryAddress()
+                primaryAddress
         );
     }
 
@@ -46,6 +53,5 @@ public class UserMapper {
         Optional.ofNullable(updateUserDto.firstName()).ifPresent(user::setFirstName);
         Optional.ofNullable(updateUserDto.firstName()).ifPresent(user::setFirstName);
         Optional.ofNullable(updateUserDto.lastName()).ifPresent(user::setLastName);
-        Optional.ofNullable(updateUserDto.deliveryAddress()).ifPresent(user::setDeliveryAddress);
     }
 }

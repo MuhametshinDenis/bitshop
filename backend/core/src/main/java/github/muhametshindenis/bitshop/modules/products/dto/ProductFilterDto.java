@@ -1,5 +1,7 @@
 package github.muhametshindenis.bitshop.modules.products.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.math.BigDecimal;
 
 /**
@@ -8,10 +10,19 @@ import java.math.BigDecimal;
  * @since 19.09.2025 September 2025
  */
 public record ProductFilterDto(
+        @Schema(description = "ID категории для фильтрации", example = "1")
         Long categoryId,
+
+        @Schema(description = "Минимальная цена", example = "10.5")
         BigDecimal minPrice,
+
+        @Schema(description = "Максимальная цена", example = "100.0")
         BigDecimal maxPrice,
+
+        @Schema(description = "Номер страницы (по умолчанию 1)", example = "1")
         Integer page,
+
+        @Schema(description = "Размер страницы (по умолчанию 20)", example = "20")
         Integer pageSize
 ) {
     public ProductFilterDto(

@@ -1,0 +1,25 @@
+@baseUrl = {{url}}/api/v1/orders
+
+@orderId = 1
+
+### Создание заказа
+POST {{baseUrl}}/ HTTP/1.1
+Content-Type: application/json
+
+### Получение всех заказов
+GET {{baseUrl}}/ HTTP/1.1
+
+### Получение заказа по ID
+GET {{baseUrl}}/1 HTTP/1.1
+
+### Обновление заказа по ID
+PATCH {{baseUrl}}/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "status": "",
+  "deliveryAddress": ""
+}
+
+### Получение содержимого заказа по ID
+GET {{baseUrl}}/items/{{orderId}}

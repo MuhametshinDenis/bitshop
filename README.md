@@ -121,7 +121,7 @@ docker-compose up
 
 ## API Документация
 
-- **Core Service**: http://localhost:8080/swagger-ui.html
+- **Core Service**: http://localhost:8080/api/v1/docs/swagger-ui
 - **GraphQL Playground**: http://localhost:8080/graphiql
 
 ## Особенности

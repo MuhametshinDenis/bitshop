@@ -1,6 +1,6 @@
 @baseUrl = {{url}}/api/v1/carts
 
-@productId = 1
+@productId = {{$random.number.digit}}
 @quantity = {{$random.number.digit}}
 
 ### Получить корзину (метаданные, сумма, количество)
@@ -15,7 +15,7 @@ Content-Type: application/json
 
 {
   "productId": {{productId}},
-  "quantity": 7
+  "quantity": {{quantity}}
 }
 
 ### Получить все товары в корзине
@@ -29,7 +29,7 @@ PATCH {{baseUrl}}/items/{{productId}} HTTP/1.1
 Content-Type: application/json
 
 {
-  "quantity": 10
+  "quantity": 12
 }
 
 ### Удалить товар из корзины

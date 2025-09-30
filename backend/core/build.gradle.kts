@@ -32,7 +32,6 @@ dependencies {
 	
 	// Graphql and Webflux
 	implementation("org.springframework.boot:spring-boot-starter-graphql")
-	implementation("org.springframework.boot:spring-boot-starter-data-elasticsearch")
 	testImplementation("org.springframework.graphql:spring-graphql-test")
 	testImplementation("org.springframework:spring-webflux")
 
@@ -57,6 +56,9 @@ dependencies {
 	annotationProcessor("org.projectlombok:lombok")
 	testCompileOnly("org.projectlombok:lombok:1.18.28")
 	testAnnotationProcessor("org.projectlombok:lombok:1.18.28")
+
+	// Stripe
+	implementation("com.stripe:stripe-java:29.5.0")
 
 	// Dev tools
 	developmentOnly("org.springframework.boot:spring-boot-devtools")

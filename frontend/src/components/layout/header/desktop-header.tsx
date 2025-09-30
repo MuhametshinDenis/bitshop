@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input"
 import { ROUTES } from "@/constants/routes"
 import Link from "next/link"
 import { useSidebar } from "@/components/ui/sidebar"
-import { getMe } from "@/api/auth-api"
+import { useUserStore } from "@/store/userStore"
 
 export const headerItems = [
   { label: "Профиль", link: ROUTES.PROFILE, icon: CircleUser },
@@ -21,6 +21,7 @@ export const headerItems = [
 
 export function DesktopHeader() {
   const { toggleSidebar } = useSidebar()
+  const { user } = useUserStore()
 
   return (
     <header className="flex items-center justify-between py-2 gap-3">

@@ -33,10 +33,10 @@ public class Cart extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Currency currency = Currency.RUB;
+    private Currency currency;
 
     @Override
-    protected void setDefaults() {
+    protected void initDefaults() {
         if (currency == null) {
             currency = Currency.RUB;
         }

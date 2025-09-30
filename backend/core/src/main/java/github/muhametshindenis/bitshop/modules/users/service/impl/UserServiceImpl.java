@@ -73,19 +73,7 @@ public class UserServiceImpl implements UserService {
                 .isPresent();
     }
 
-    /**
-     * Обновляет данные пользователя на основе информации из {@link UpdateUserDto}.
-     * <p>
-     * Все поля DTO, кроме аватара, обновляются через {@link UserMapper#updateFromDto(UpdateUserDto, User)}.
-     * Аватар обрабатывается отдельно через {@link github.muhametshindenis.bitshop.modules.storage.service.StorageService}.
-     * <p>
-     * Если пользователь с указанным email не найден, выбрасывается {@link NotFoundException}.
-     *
-     * @param updateUserDto DTO с данными для обновления пользователя
-     * @param userDetails   текущий аутентифицированный пользователь
-     * @return {@link UserResponseDto} с обновлёнными данными пользователя
-     * @throws IOException если возникает ошибка при сохранении аватара через StorageService
-     */
+    //TODO: Написать unit-тесты для метода
     @Override
     public UserResponseDto update(UpdateUserDto updateUserDto, UserDetails userDetails) throws IOException {
         String userEmail = userDetails.getUsername();

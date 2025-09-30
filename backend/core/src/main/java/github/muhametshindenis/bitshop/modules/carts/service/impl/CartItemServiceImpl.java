@@ -56,6 +56,10 @@ public class CartItemServiceImpl implements CartItemService {
             throw new BadRequestException("Указанное количество товара превышает существующее!");
         }
 
+        if (createCartItemDto.quantity() <= 0) {
+            throw new BadRequestException("Указанное количество товара должно быть больше 0!");
+        }
+
         Cart cart = this.cartService.findCartByUser(user);
 
         CartItem cartItem = CartItem.builder()

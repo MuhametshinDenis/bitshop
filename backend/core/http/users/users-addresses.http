@@ -1,0 +1,55 @@
+@baseUrl = {{url}}/api/v1/users/delivery-addresses
+
+@deliveryAddress = {{$random.address.city}}
+@deliveryAddressId = 1
+
+### Добавление нового адреса по умолчанию задается primary
+POST {{baseUrl}}/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "deliveryAddress": "{{deliveryAddress}}"
+}
+
+### Добавление нового адреса без включения как primary
+POST {{baseUrl}}/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "deliveryAddress": "{{deliveryAddress}}",
+  "isPrimary": false
+}
+
+### Получение всех адресов
+GET {{baseUrl}}/ HTTP/1.1
+
+### Получение адреса по ID
+GET {{baseUrl}}/{{deliveryAddressId}}
+
+### Обновить название адрес
+PATCH {{baseUrl}}/{{deliveryAddressId}}
+Content-Type: application/json
+
+{
+  "deliveryAddress": "{{deliveryAddress}}"
+}
+
+### Обновить адрес на основной
+PATCH {{baseUrl}}/{{deliveryAddressId}}
+Content-Type: application/json
+
+{
+  "isPrimary": true
+}
+
+### Обновить навзание адреса и сделать основным
+PATCH {{baseUrl}}/{{deliveryAddressId}}
+Content-Type: application/json
+
+{
+  "deliveryAddress": "{{deliveryAddress}}",
+  "isPrimary": true
+}
+
+### Удалить адрес по ID
+DELETE {{baseUrl}}/{{deliveryAddressId}} HTTP/1.1

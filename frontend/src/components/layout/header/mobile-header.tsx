@@ -1,18 +1,16 @@
-import { Bell, Navigation, Search } from "lucide-react"
+import { Bell, Search } from "lucide-react"
 import Link from "next/link"
+import { useUserStore } from "@/store/userStore"
+import { DeliveryAddressDrawer } from "@/components/delivery-address-drawer"
 
 export function MobileHeader() {
+  const { user } = useUserStore()
+
   return (
     <header className="w-full p-2">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-bold text-primary">BitShop</h1>
-        <div
-          role="button"
-          className="flex items-center gap-2 text-muted-foreground transition-all duration-200 hover:cursor-pointer hover:text-primary"
-        >
-          <Navigation size={20} />
-          <p>Москва</p>
-        </div>
+        <DeliveryAddressDrawer user={user} />
       </div>
       <div className="mt-2 flex items-center justify-between gap-2">
         <Link
