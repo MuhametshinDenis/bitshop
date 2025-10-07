@@ -51,7 +51,6 @@ public class UserMapper {
      */
     public static void updateFromDto(UpdateUserDto updateUserDto, User user) {
         Optional.ofNullable(updateUserDto.firstName()).ifPresent(user::setFirstName);
-        Optional.ofNullable(updateUserDto.firstName()).ifPresent(user::setFirstName);
         Optional.ofNullable(updateUserDto.lastName()).ifPresent(user::setLastName);
     }
 }

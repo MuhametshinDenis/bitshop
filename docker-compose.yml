@@ -14,7 +14,7 @@ services:
       - bitshop-db-data:/var/lib/postgresql/data
   elasticsearch:
     container_name: elasticsearch
-    image: bitnami/elasticsearch
+    image: bitnamilegacy/elasticsearch
     ports:
       - "9200:9200"
   redis:

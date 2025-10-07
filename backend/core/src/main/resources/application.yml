@@ -54,6 +54,5 @@ springdoc:
   swagger-ui:
     path: /api/v1/docs/swagger-ui
     enabled: true
-#TODO: изменить на .env окружение
 stripe:
-  secret-key: sk_test_51SBgZFRxbOwr9p16piCcg0tsHShV2FPkZdvYDp55Lhizd3ceFrhPhzFSN0u19DC9YBWRxUOffikVJWv36EZnULBn003zxNSpQO
+  secret-key: ${STRIPE_SECRET_KEY}

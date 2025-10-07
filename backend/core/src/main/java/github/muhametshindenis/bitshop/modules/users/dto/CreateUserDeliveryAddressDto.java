@@ -9,7 +9,7 @@ import jakarta.validation.constraints.NotBlank;
  */
 public record CreateUserDeliveryAddressDto(
         @NotBlank(message = "Поле address является обязательным!")
-        String address,
+        String deliveryAddress,
         Boolean isPrimary
 ) {
     public CreateUserDeliveryAddressDto {

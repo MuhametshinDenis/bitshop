@@ -1,0 +1,10 @@
+ALTER TABLE order_items
+    ADD COLUMN name VARCHAR(255) DEFAULT 'UNKNOWN';
+
+UPDATE order_items SET name = 'UNKNOWN' WHERE name IS NULL;
+
+ALTER TABLE order_items
+    ALTER COLUMN name SET NOT NULL;
+
+ALTER TABLE order_items
+    ALTER COLUMN name DROP DEFAULT;

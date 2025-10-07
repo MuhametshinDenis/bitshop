@@ -2,6 +2,7 @@ package github.muhametshindenis.bitshop.modules.orders.entity;
 
 import github.muhametshindenis.bitshop.common.base.BaseEntity;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -10,6 +11,11 @@ import java.math.BigDecimal;
  * @see <a href="https://github.com/MuhametshinDenis">https://github.com/MuhametshinDenis</a>
  * @since 29.09.2025 September 2025
  */
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "order_items")
 public class OrderItem extends BaseEntity {
@@ -20,6 +26,9 @@ public class OrderItem extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
+
+    @Column(nullable = false)
+    private String name;
 
     @Column(nullable = false, name = "product_id")
     private Long productId;

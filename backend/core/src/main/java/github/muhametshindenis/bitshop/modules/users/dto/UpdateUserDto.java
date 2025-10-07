@@ -10,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 public record UpdateUserDto(
         String firstName,
         String lastName,
-        MultipartFile avatar,
-        String deliveryAddress
+        MultipartFile avatar
 ) {
 }

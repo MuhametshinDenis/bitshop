@@ -16,7 +16,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -38,7 +37,7 @@ public class UserDeliveryAddressServiceImpl implements UserDeliveryAddressServic
     public UserDeliveryAddressResponseDto create(UserDetails userDetails, CreateUserDeliveryAddressDto createUserDeliveryAddressDto) {
         User user = this.getUserFromUserDetails(userDetails);
 
-        if (this.userDeliveryAddressRepository.findByUserIdAndDeliveryAddress(user.getId(), createUserDeliveryAddressDto.address()).isPresent()) {
+        if (this.userDeliveryAddressRepository.findByUserIdAndDeliveryAddress(user.getId(), createUserDeliveryAddressDto.deliveryAddress()).isPresent()) {
             throw new ConflictException("У пользователя уже существует такой адрес!");
         }
 

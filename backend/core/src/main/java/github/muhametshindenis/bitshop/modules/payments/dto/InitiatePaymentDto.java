@@ -6,6 +6,6 @@ package github.muhametshindenis.bitshop.modules.payments.dto;
  * @since 28.09.2025 September 2025
  */
 public record InitiatePaymentDto(
-        Long cartId
+        Long orderId
 ) {
 }

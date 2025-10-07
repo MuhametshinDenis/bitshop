@@ -1,0 +1,49 @@
+@productId = 1
+@baseUrl = {{url}}/api/v1/products/{{productId}}}/reviews
+@reviewId = 1
+
+### Создание отзыва
+POST {{baseUrl}}/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "comment": "{{$random.lorem.paragraph}}",
+  "rating": 4.5
+}
+
+###
+
+#{
+#    "id": 1,
+#    "comment": "jjljjjlkj",
+#    "rating": 4.5,
+#    "user": {
+#       "id": 1
+#    }
+#}
+
+### Получение все отзывов о продукте
+GET {{baseUrl}}/ HTTP/1.1
+
+###
+
+#[{
+#    "id": 1,
+#    "comment": "jjljjjlkj",
+#    "rating": 4.5,
+#    "user": {
+#       "id": 1
+#    }
+#}]
+
+### Удаление отзыва о продукте
+DELETE {{baseUrl}}/{{reviewId}}
+
+### Изменить рейтинг или комментарий
+POST {{baseUrl}}/{{reviewId}}
+Content-Type: application/json
+
+{
+  "comment": "{{$random.lorem.paragraph}}",
+  "rating": 3.4
+}

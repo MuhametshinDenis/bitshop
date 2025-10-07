@@ -6,7 +6,7 @@ package github.muhametshindenis.bitshop.modules.users.dto;
  * @since 29.09.2025 September 2025
  */
 public record UpdateUserDeliveryAddressDto(
-        String address,
+        String deliveryAddress,
         Boolean isPrimary
 ) {
 }

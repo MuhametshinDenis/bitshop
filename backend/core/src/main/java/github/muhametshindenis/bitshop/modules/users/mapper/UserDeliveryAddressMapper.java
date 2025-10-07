@@ -16,7 +16,7 @@ import java.util.Optional;
 public class UserDeliveryAddressMapper {
     public static UserDeliveryAddress toEntity(CreateUserDeliveryAddressDto createUserDeliveryAddressDto, User user) {
         return UserDeliveryAddress.builder()
-                .deliveryAddress(createUserDeliveryAddressDto.address())
+                .deliveryAddress(createUserDeliveryAddressDto.deliveryAddress())
                 .isPrimary(createUserDeliveryAddressDto.isPrimary())
                 .user(user)
                 .build();
@@ -30,7 +30,7 @@ public class UserDeliveryAddressMapper {
     }
 
     public static void updateFromDto(UpdateUserDeliveryAddressDto updateUserDeliveryAddressDto, UserDeliveryAddress userDeliveryAddress) {
-        Optional.ofNullable(updateUserDeliveryAddressDto.address()).ifPresent(userDeliveryAddress::setDeliveryAddress);
+        Optional.ofNullable(updateUserDeliveryAddressDto.deliveryAddress()).ifPresent(userDeliveryAddress::setDeliveryAddress);
         Optional.ofNullable(updateUserDeliveryAddressDto.isPrimary()).ifPresent(userDeliveryAddress::setIsPrimary);
     }
 }

@@ -8,7 +8,7 @@ import jakarta.validation.constraints.NotBlank;
  * @since 29.09.2025 September 2025
  */
 public record UserDeliveryAddressResponseDto(
-        String address,
+        String deliveryAddress,
         Boolean isPrimary
 ) {
 }
